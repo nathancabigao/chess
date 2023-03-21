@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'colorize'
+
 require_relative './pieces/piece'
 require_relative './pieces/pawn'
 require_relative './pieces/rook'
@@ -7,10 +9,13 @@ require_relative './pieces/knight'
 require_relative './pieces/bishop'
 require_relative './pieces/queen'
 require_relative './pieces/king'
+require_relative './board_display'
 
 # Used to create chess board instances.
 class Board
   attr_reader :board
+
+  include BoardDisplay
 
   def initialize
     # 8x8 board: 8 columns of 8 nils (rows)
@@ -20,16 +25,7 @@ class Board
   end
 
   def display
-    #puts "0 0 is #{@board[0][0].symbol} #{@board[0][0].location.inspect}"
-    puts '   | a | b | c | d | e | f | g | h |'
-    7.downto(0).each do |row|
-      print " #{row + 1} |"
-      8.times do |col|
-        symbol = @board[col][row].nil? ? ' ' : @board[col][row].symbol
-        print " #{symbol} |"
-      end
-      print "\n"
-    end
+    display_chess_board
   end
 
   def starting_positions
