@@ -10,8 +10,8 @@ require_relative './pieces/bishop'
 require_relative './pieces/queen'
 require_relative './pieces/king'
 
+# Methods for displaying the Chess Board as the game goes on.
 module BoardDisplay
-
   def square(symbol, color = :default, background = :default, mode = :default)
     " #{symbol} ".colorize(color: color, background: background, mode: mode)
   end
@@ -22,11 +22,11 @@ module BoardDisplay
     bg = :light_blue
     7.downto(0).each do |row|
       print square((row + 1).to_s, :light_blue, :black, :bold)
-      bg = bg == :light_blue ? :white : :light_blue
+      bg = bg == :white ? :light_blue : :white
       8.times do |col|
         symbol = @board[col][row].nil? ? ' ' : @board[col][row].symbol
         print square(symbol, :black, bg)
-        bg = bg == :light_blue ? :white : :light_blue
+        bg = bg == :white ? :light_blue : :white
       end
       print "\n"
     end
