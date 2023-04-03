@@ -17,7 +17,7 @@ module BoardDisplay
   end
 
   def display_chess_board
-    %w[_ a b c d e f g h].each { |col| print square(col, :light_blue, :black, :bold) }
+    [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].each { |col| print square(col, :light_blue, :black, :bold) }
     print "\n"
     bg = :light_blue
     7.downto(0).each do |row|
