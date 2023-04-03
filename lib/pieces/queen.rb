@@ -8,4 +8,8 @@ class Queen < Piece
     super(board, color, location)
     @symbol = symbol_char(QUEEN_WHITE, QUEEN_BLACK)
   end
+
+  def moveset
+    [[-1, 1], [0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0]]
+  end
 end

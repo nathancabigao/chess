@@ -8,4 +8,8 @@ class Bishop < Piece
     super(board, color, location)
     @symbol = symbol_char(BISHOP_WHITE, BISHOP_BLACK)
   end
+
+  def moveset
+    [[-1, 1], [1, 1], [1, -1], [-1, -1]]
+  end
 end

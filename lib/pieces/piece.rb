@@ -44,6 +44,7 @@ class Piece
     @move_history.empty?
   end
 
+  # Only for movement, not captures
   def possible_moves
     possible_moves = []
     moveset.each do |move|
@@ -64,5 +65,11 @@ class Piece
     return true if !col.between(0, 7) || !row.between(0, 7)
 
     false
+  end
+
+  private
+
+  def moveset
+    []
   end
 end
