@@ -29,22 +29,22 @@ class Board
   end
 
   def starting_positions
-    starting_pawns('white')
-    starting_unique_pieces('white')
-    starting_pawns('black')
-    starting_unique_pieces('black')
+    starting_pawns(:white)
+    starting_unique_pieces(:white)
+    starting_pawns(:black)
+    starting_unique_pieces(:black)
   end
 
   # Places starting pawns depending on the color
   def starting_pawns(color)
-    row = color == 'white' ? 1 : 6
+    row = color == :white ? 1 : 6
     8.times do |col|
       @board[col][row] = Pawn.new(color, [col, row])
     end
   end
 
   def starting_unique_pieces(color)
-    row = color == 'white' ? 0 : 7
+    row = color == :white ? 0 : 7
     [0, 7].each { |col| @board[col][row] = Rook.new(color, [col, row]) }
     [1, 6].each { |col| @board[col][row] = Knight.new(color, [col, row]) }
     [2, 5].each { |col| @board[col][row] = Bishop.new(color, [col, row]) }

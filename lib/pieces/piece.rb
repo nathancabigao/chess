@@ -18,13 +18,13 @@ KING_BLACK = "\u265A"
 class Piece
   attr_reader :color, :location, :symbol
 
-  def initialize(color = 'white', location = [0, 0])
+  def initialize(color = :white, location = [0, 0])
     @color = color
     @location = location
     @symbol = ' '
   end
 
   def symbol_char(white_symbol, black_symbol)
-    @color == 'white' ? white_symbol : black_symbol
+    @color == :white ? white_symbol : black_symbol
   end
 end
