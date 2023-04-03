@@ -39,16 +39,16 @@ class Board
   def starting_pawns(color)
     row = color == :white ? 1 : 6
     8.times do |col|
-      @board[col][row] = Pawn.new(color, [col, row])
+      @board[col][row] = Pawn.new(self, color, [col, row])
     end
   end
 
   def starting_unique_pieces(color)
     row = color == :white ? 0 : 7
-    [0, 7].each { |col| @board[col][row] = Rook.new(color, [col, row]) }
-    [1, 6].each { |col| @board[col][row] = Knight.new(color, [col, row]) }
-    [2, 5].each { |col| @board[col][row] = Bishop.new(color, [col, row]) }
-    @board[3][row] = Queen.new(color, [3, row])
-    @board[4][row] = King.new(color, [4, row])
+    [0, 7].each { |col| @board[col][row] = Rook.new(self, color, [col, row]) }
+    [1, 6].each { |col| @board[col][row] = Knight.new(self, color, [col, row]) }
+    [2, 5].each { |col| @board[col][row] = Bishop.new(self, color, [col, row]) }
+    @board[3][row] = Queen.new(self, color, [3, row])
+    @board[4][row] = King.new(self, color, [4, row])
   end
 end
