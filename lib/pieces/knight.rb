@@ -20,6 +20,16 @@ class Knight < Piece
     possible_moves
   end
 
+  def possible_captures
+    possible_captures
+    moveset.each do |move|
+      col = @location[0] + move[0]
+      row = @location[1] + move[1]
+      possible_captures << [col, row] if enemy_piece?(col, row)
+    end
+    possible_captures
+  end
+
   def moveset
     [[-2, 1], [-1, 2], [1, 2], [2, 1], [2, -1], [1, -2], [-1, -2], [-2, -1]]
   end

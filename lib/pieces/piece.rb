@@ -59,12 +59,36 @@ class Piece
     possible_moves
   end
 
+  def possible_captures
+    possible_captures = []
+    moveset.each do |move|
+      col = @location[0] + move[0]
+      row = @location[1] + move[1]
+      until invalid_location?(col, row)
+        possible_captures << [col, row] if enemy_piece?(col, row)
+        col += move[0]
+        row += move[1]
+      end
+    end
+    possible_captures
+  end
+
+  # Returns true if there is a piece at the spot on the board that is the opposite color.
+  def enemy_piece?(col, row)
+    board.board[col][row] && board.board[col][row].color != @color
+  end
+
   def invalid_location?(board, col, row)
     return true if board.board[col][row]
 
     return true if !col.between(0, 7) || !row.between(0, 7)
 
     false
+  end
+
+  # Takes in two vectors (moves) and returns the resulting vector as an array [col, row]
+  def vector_addition(move1, move2)
+    [move1, move2].transpose.map { |x| x.reduce(:+) }
   end
 
   private
