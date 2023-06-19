@@ -3,4 +3,4 @@
 require_relative './lib/game'
 
 new_game = Game.new
-new_game.board.display
+new_game.play
